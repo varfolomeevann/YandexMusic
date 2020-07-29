@@ -1,6 +1,7 @@
 package page.signinpage;
 
 import static page.signinpage.SignYandexMusicPageLocators.*;
+import org.openqa.selenium.WebElement;
 import page.BaseYandexMusicPage;
 
 public class SignYandexMusicPage extends BaseYandexMusicPage {
@@ -26,9 +27,24 @@ public class SignYandexMusicPage extends BaseYandexMusicPage {
     public void clickLoginButtonWindowLogin() {
 	lookForElementJs(SIGN_JS_LOGIN);
     }
+
     public void clickLoginButtonWindowPasswd() {
 	lookForElementJs(SIGN_JS_PASSWD);
-//	windowMain();
+    }
+
+    public WebElement isIcon() {
+	window();
+	return lookForElement(USER_ICON);
+
+    }
+
+    public WebElement isLogin() {
+	return lookForElement(USER_LOGIN_SUCCESSFULL);
+
+    }
+    public WebElement messageErrorAuthorization() {
+	return lookForElement(USER_DATA_IS_WRONG);
+
     }
 
     public void open() {
