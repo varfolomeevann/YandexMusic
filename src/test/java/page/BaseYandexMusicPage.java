@@ -23,7 +23,7 @@ public class BaseYandexMusicPage {
 	return titleElement;
     }
 
-    public void open(String padgeURL) {
+    protected void open(String padgeURL) {
 	driver.get(padgeURL);
     }
 

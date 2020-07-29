@@ -26,7 +26,7 @@ public class LoginTest extends BaseTest {
 	signPadge.clickLoginButtonWindowLogin();
 	signPadge.insertPassword(passwd);
 	signPadge.clickLoginButtonWindowPasswd();
-	signPadge.isIcon().click();
+	signPadge.isIconClick();
 	Assert.assertEquals(signPadge.isLogin().getText(), login);
 
     }

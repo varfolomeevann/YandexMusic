@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import page.BaseYandexMusicPage;
 
 public class SignYandexMusicPage extends BaseYandexMusicPage {
-    String padgeURL = "https://music.yandex.by/home";
+    private String padgeURL = "https://music.yandex.by/home";
 
     public void clickLoginButton() {
 	lookForElement(SIGN_IN_BUTTON).click();
@@ -32,9 +32,9 @@ public class SignYandexMusicPage extends BaseYandexMusicPage {
 	lookForElementJs(SIGN_JS_PASSWD);
     }
 
-    public WebElement isIcon() {
+    public void isIconClick() {
 	window();
-	return lookForElement(USER_ICON);
+	lookForElement(USER_ICON).click();
 
     }
 
