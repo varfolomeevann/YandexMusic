@@ -5,20 +5,18 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import page.mainyandexmusicpage.SuccessfulLoginYandexMusicPage;
 import page.signinpage.SignYandexMusicPage;
 
 public class LoginTest extends BaseTest {
 //    ConfirmationPage confirmationPadge;
 //    ErrorMessagePage errorMessagePage;
+    private String login = "varfolomeevann"; 
+    private String passwd = "26112011na"; 
     SignYandexMusicPage signPadge;
-    SuccessfulLoginYandexMusicPage succesfulLoginPage;
 
     @BeforeMethod
     public void setup() {
 	signPadge = new SignYandexMusicPage();
-	succesfulLoginPage = new SuccessfulLoginYandexMusicPage();
-//	errorMessagePage = new ErrorMessagePage();
 	signPadge.open();
 
     }
@@ -26,13 +24,13 @@ public class LoginTest extends BaseTest {
     @Test(description = "Все поля валидные")
     public void successfullLogin() {
 	signPadge.clickLoginButton();
-	signPadge.clearLogin();
-	signPadge.insertLogin("varfolomeevann");
+	signPadge.insertLogin(login);
 	signPadge.clickLoginButtonWindowLogin();
-	signPadge.insertPassword("26112011na");
+	signPadge.insertPassword(passwd);
 	signPadge.clickLoginButtonWindowPasswd();
-
-	Assert.assertTrue(succesfulLoginPage.isDispalyed());
+	signPadge.isIcon().click();
+	Assert.assertEquals(signPadge.isLogin().getText(), login);
+	
 
     }
 
@@ -67,7 +65,6 @@ public class LoginTest extends BaseTest {
     public void tearDown() {
 	super.tearDown();
 	signPadge = null;
-	succesfulLoginPage = null;
 //	errorMessagePage = null;
     }
 
