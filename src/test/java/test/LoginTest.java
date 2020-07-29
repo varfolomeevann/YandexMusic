@@ -1,17 +1,15 @@
 package test;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import page.signinpage.SignYandexMusicPage;
 
 public class LoginTest extends BaseTest {
-//    ConfirmationPage confirmationPadge;
-//    ErrorMessagePage errorMessagePage;
-    private String login = "varfolomeevann"; 
-    private String passwd = "26112011na"; 
+    private String login = "varfolomeevann";
+    private String passwd = "26112011na";
     SignYandexMusicPage signPadge;
 
     @BeforeMethod
@@ -21,7 +19,7 @@ public class LoginTest extends BaseTest {
 
     }
 
-    @Test(description = "Все поля валидные")
+    @Test(description = "Форма авторизации. Все поля валидные")
     public void successfullLogin() {
 	signPadge.clickLoginButton();
 	signPadge.insertLogin(login);
@@ -30,42 +28,40 @@ public class LoginTest extends BaseTest {
 	signPadge.clickLoginButtonWindowPasswd();
 	signPadge.isIcon().click();
 	Assert.assertEquals(signPadge.isLogin().getText(), login);
-	
 
     }
 
-//    @Test(description = "Все поля пустые")
-//    public void emptyFields() {
-//	signPadge.clickLoginButton();
-//	
-//	Assert.assertTrue(errorMessagePage.isDispalyed());
-////	Assert.assertTrue(confirmationPadge.isDispalyed());
-//    }
-//    
-//    @Test(description = "Поле пароль пустое")
-//    public void oneEmptyFields() {
-//	signPadge.insertLogin("demo");
-//	signPadge.clickLoginButton();
-//	
-//	Assert.assertTrue(errorMessagePage.isDispalyed());
-//	
-//    }
-//    @Test(description = "Логин, пароль несуществующего пользователя")
-//    public void noExistUser() {
-//	signPadge.insertLogin("1111");
-//	signPadge.insertPassword("1111");
-//	signPadge.clickLoginButton();
-//	
-//	Assert.assertTrue(errorMessagePage.isDispalyed());
-//	
-//    }
-//        
+    @Test(description = "Форма авторизации. Поле логин пустое")
+    public void fieldLoginisEmpty() {
+	signPadge.clickLoginButton();
+	signPadge.clickLoginButtonWindowLogin();
+	Assert.assertEquals(signPadge.messageErrorAuthorization().getText(), "Логин не указан");
+
+    }
+    @Test(description = "Форма авторизации. Неверный пароль")
+    public void fieldPasswordIsWrong() {
+	signPadge.clickLoginButton();
+	signPadge.insertLogin(login);
+	signPadge.clickLoginButtonWindowLogin();
+	signPadge.insertPassword("1111");
+	signPadge.clickLoginButtonWindowPasswd();
+	Assert.assertEquals(signPadge.messageErrorAuthorization().getText(), "Неверный пароль");
+
+    }
+    @Test(description = "Форма авторизации. Несуществующий пользователь")
+    public void nonExistUser() {
+	signPadge.clickLoginButton();
+	signPadge.insertLogin("natdjssoeeoe");
+	signPadge.clickLoginButtonWindowLogin();
+	Assert.assertEquals(signPadge.messageErrorAuthorization().getText(), "Такого аккаунта нет");
+
+    }
+
     @Override
-    @AfterTest
+    @AfterMethod
     public void tearDown() {
 	super.tearDown();
 	signPadge = null;
-//	errorMessagePage = null;
     }
 
 }

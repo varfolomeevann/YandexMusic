@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.concurrent.TimeUnit;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -88,6 +90,7 @@ public class WebDriverListner implements WebDriverEventListener {
     @Override
     public void beforeFindBy(By by, WebElement element, WebDriver driver) {
 	// TODO Auto-generated method stub
+	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	log.info("Try find element " + " " + by);
 
     }
