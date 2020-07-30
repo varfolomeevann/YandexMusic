@@ -19,7 +19,7 @@ public class LoginTest extends BaseTest {
 
     }
 
-    @Test(description = "Форма авторизации. Все поля валидные")
+    @Test(priority = 0, description = "Форма авторизации. Все поля валидные")
     public void successfullLogin() {
 	signPadge.clickLoginButton();
 	signPadge.insertLogin(login);
@@ -31,14 +31,14 @@ public class LoginTest extends BaseTest {
 
     }
 
-    @Test(description = "Форма авторизации. Поле логин пустое")
+    @Test(priority = 1, description = "Форма авторизации. Поле логин пустое")
     public void fieldLoginisEmpty() {
 	signPadge.clickLoginButton();
 	signPadge.clickLoginButtonWindowLogin();
 	Assert.assertEquals(signPadge.messageErrorAuthorization().getText(), "Логин не указан");
 
     }
-    @Test(description = "Форма авторизации. Неверный пароль")
+    @Test(priority = 2, description = "Форма авторизации. Неверный пароль")
     public void fieldPasswordIsWrong() {
 	signPadge.clickLoginButton();
 	signPadge.insertLogin(login);
@@ -48,7 +48,7 @@ public class LoginTest extends BaseTest {
 	Assert.assertEquals(signPadge.messageErrorAuthorization().getText(), "Неверный пароль");
 
     }
-    @Test(description = "Форма авторизации. Несуществующий пользователь")
+    @Test(priority = 3, description = "Форма авторизации. Несуществующий пользователь")
     public void nonExistUser() {
 	signPadge.clickLoginButton();
 	signPadge.insertLogin("natdjssoeeoe");
