@@ -2,9 +2,9 @@ package page.signinpage;
 
 import static page.signinpage.SignYandexMusicPageLocators.*;
 import org.openqa.selenium.WebElement;
-import page.BaseYandexMusicPage;
+import page.BaseYandexPage;
 
-public class SignYandexMusicPage extends BaseYandexMusicPage {
+public class SignYandexMusicPage extends BaseYandexPage {
     private String padgeURL = "https://music.yandex.by/home";
 
     public void clickLoginButton() {

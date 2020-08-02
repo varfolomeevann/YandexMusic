@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 
 import driver.DriverSingletion;
 
-public class BaseYandexMusicPage {
+public class BaseYandexPage {
     private WebDriver driver = DriverSingletion.getDriver();
     private JavascriptExecutor jsExecutor;
 
