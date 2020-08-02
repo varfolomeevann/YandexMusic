@@ -1,5 +1,7 @@
 package driver;
 
+import java.util.concurrent.TimeUnit;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,6 +20,7 @@ public class DriverSingletion {
 	if (driver == null) {
 	    driver = new EventFiringWebDriver(new ChromeDriver());
 	    driver.register(new WebDriverListner());
+	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	log.info("Get driver");
 	return driver;

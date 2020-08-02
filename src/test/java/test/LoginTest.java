@@ -3,14 +3,23 @@ package test;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import page.signinpage.SignYandexMusicPage;
+import utils.Props;
 
 public class LoginTest extends BaseTest {
-    private String login = "varfolomeevann";
-    private String passwd = "26112011na";
+    private static String login;
+    private static String passwd;
     SignYandexMusicPage signPadge;
+
+    @BeforeTest
+    public void getUserLoginPassword() {
+	login = Props.getUserProperties("login");
+	passwd = Props.getUserProperties("passwd");
+
+    }
 
     @BeforeMethod
     public void setup() {
@@ -31,13 +40,15 @@ public class LoginTest extends BaseTest {
 
     }
 
-    @Test(priority = 1, description = "Форма авторизации. Поле логин пустое")
+//    @Test(priority = 1, description = "Форма авторизации. Поле логин пустое")
     public void fieldLoginisEmpty() {
 	signPadge.clickLoginButton();
+
 	signPadge.clickLoginButtonWindowLogin();
 	Assert.assertEquals(signPadge.messageErrorAuthorization().getText(), "Логин не указан");
 
     }
+
     @Test(priority = 2, description = "Форма авторизации. Неверный пароль")
     public void fieldPasswordIsWrong() {
 	signPadge.clickLoginButton();
@@ -48,6 +59,7 @@ public class LoginTest extends BaseTest {
 	Assert.assertEquals(signPadge.messageErrorAuthorization().getText(), "Неверный пароль");
 
     }
+
     @Test(priority = 3, description = "Форма авторизации. Несуществующий пользователь")
     public void nonExistUser() {
 	signPadge.clickLoginButton();
