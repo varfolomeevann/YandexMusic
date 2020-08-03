@@ -36,7 +36,7 @@ public class LoginTest extends BaseTest {
 	signPadge.insertPassword(passwd);
 	signPadge.clickLoginButtonWindowPasswd();
 	signPadge.isIconClick();
-	Assert.assertEquals(signPadge.isLogin().getText(), login);
+	Assert.assertEquals(signPadge.isLogin(), login);
 
     }
 
@@ -45,7 +45,7 @@ public class LoginTest extends BaseTest {
 	signPadge.clickLoginButton();
 
 	signPadge.clickLoginButtonWindowLogin();
-	Assert.assertEquals(signPadge.messageErrorAuthorization().getText(), "Логин не указан");
+	Assert.assertEquals(signPadge.messageErrorAuthorization(), "Логин не указан");
 
     }
 
@@ -56,7 +56,7 @@ public class LoginTest extends BaseTest {
 	signPadge.clickLoginButtonWindowLogin();
 	signPadge.insertPassword("1111");
 	signPadge.clickLoginButtonWindowPasswd();
-	Assert.assertEquals(signPadge.messageErrorAuthorization().getText(), "Неверный пароль");
+	Assert.assertEquals(signPadge.messageErrorAuthorization(), "Неверный пароль");
 
     }
 
@@ -65,7 +65,7 @@ public class LoginTest extends BaseTest {
 	signPadge.clickLoginButton();
 	signPadge.insertLogin("natdjssoeeoe");
 	signPadge.clickLoginButtonWindowLogin();
-	Assert.assertEquals(signPadge.messageErrorAuthorization().getText(), "Такого аккаунта нет");
+	Assert.assertEquals(signPadge.messageErrorAuthorization(), "Такого аккаунта нет");
 
     }
 

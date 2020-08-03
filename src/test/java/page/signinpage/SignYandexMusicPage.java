@@ -38,12 +38,12 @@ public class SignYandexMusicPage extends BaseYandexPage {
 
     }
 
-    public WebElement isLogin() {
-	return lookForElement(USER_LOGIN_SUCCESSFULL);
+    public String isLogin() {
+	return lookForElement(USER_LOGIN_SUCCESSFULL).getText();
 
     }
-    public WebElement messageErrorAuthorization() {
-	return lookForElement(USER_DATA_IS_WRONG);
+    public String messageErrorAuthorization() {
+	return lookForElement(USER_DATA_IS_WRONG).getText();
 
     }
 
