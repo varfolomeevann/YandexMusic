@@ -4,7 +4,7 @@
 
 Для корректоной работы проекта необходимо:
 
-1. В файл по пути: PATH_TO_CONFIG = "src\\main\\resources\\user.properties",
+1. В файл по пути: "src\\main\\resources\\user.properties",
 
  необходимо указать валидные логин и пароль пользователя в виде:
 
